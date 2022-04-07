@@ -1,0 +1,387 @@
+/*variables*/
+:root {
+    --tailleLogo: 12vh;
+    --tailleEntreLettre: 10px;
+    --tailleEntreLettreAvant: 15px;
+    --tailleLettre: xx-large;
+    --tailleScroll: 12px;
+
+    --tempsAnimation: 3s;
+
+    --couleurScroll: rgb(105, 124, 139);
+    --couleurEnTete: black;
+    --couleurFond: #0a202d;
+    --couleurBasPageBas: black;
+    --couleurBasPageHaut: #06151E;
+    --couleurEcritureEtElement: white;
+    --couleurBoutonHover: white;
+    --couleurElementBasPage: rgb(151, 151, 151);
+
+    --imageFond: url(data/eau.jpg);
+}
+
+@font-face { font-family: WhitePigeon; src: url(data/white_pigeon/White\ Pigeon.otf); }
+@font-face { font-family: Beauty; src: url(data/beauty_and_the_beast/Beauty\ and\ the\ Beast\ Sample.ttf); }
+@font-face { font-family: GameSpace; src: url(data/game_space_academy/Game\ Space\ Academy.otf); }
+@font-face { font-family: GeoLight; src: url(data/geo_sans_light/GeosansLight.ttf); }
+
+/*mise à jour des variables selon la taille de l'écran*/
+@media screen and (max-width: 720px){
+    :root {
+        --tailleLogo :10vh;
+        --tailleEntreLettre: 0px;
+        --tailleEntreLettreAvant: 2px;
+        --tailleLettre: x-large;
+    }
+}
+
+/*reglages basiques*/
+html , body {
+    display: flex;
+    height: 100vh;
+    width: 100%;
+    margin: 0;
+    flex-direction: column;
+    justify-content: stretch;
+    scroll-behavior: smooth;
+    background-image: var(--imageFond);
+    background-size : cover;
+}
+
+/* reglage de tout les boutons quand on passe dessus */
+a:hover{
+    background-color: var(--couleurBoutonHover);
+    opacity: 0.5;
+    color: var(--couleurFond);
+}
+
+/*barre de scroll*/
+body::-webkit-scrollbar {
+    width: var(--tailleScroll); 
+  }
+  
+body::-webkit-scrollbar-track { 
+    background: var(--couleurFond);
+}
+
+body::-webkit-scrollbar-thumb {
+    background-color: var(--couleurScroll); 
+    border-radius: 20px; 
+    border: 3px solid var(--couleurFond); 
+}
+
+/* entête */
+header {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    background-color: var(--couleurEnTete);
+    opacity: 0.5;
+}
+
+/* Menu */
+nav {
+    flex: 2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.menulogo img{
+    height: 10vh;
+    width: 10vh;
+    border: 1px solid var(--couleurEcritureEtElement);
+    border-radius: 90px;
+}
+
+.menu {
+    height: inherit;
+    display: flex;
+    flex-direction: column;
+}
+
+.menu:hover div{
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    align-items: center;
+    height: 100vh;
+    justify-content: center;
+    width: inherit;
+}
+
+.menu:hover div a{
+    width: 10vh;
+    height: 10vh;
+    border-radius: 90px;
+    transition: all 0.2s ease-out;
+    margin: 5px;
+    text-decoration: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--couleurBoutonHover);
+    font-family: GameSpace;
+    color: black;
+    text-align: center;
+}
+
+.menu:hover div a:hover {
+    border: 5px solid var(--couleurBoutonHover);
+}
+
+.menu div {
+    display: none;
+}
+
+/* réglage du logo et du nom de la marque */
+.elementCentre {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    flex: 3;
+    flex-wrap: wrap;
+}
+
+#logo {
+    width: var(--tailleLogo);
+    height: var(--tailleLogo);
+    animation: fadein var(--tempsAnimation);
+    -webkit-animation: fadein var(--tempsAnimation);
+}
+
+#nom{
+    color: var(--couleurEcritureEtElement);
+    animation: fadein var(--tempsAnimation);
+    -webkit-animation: fadein var(--tempsAnimation);
+    letter-spacing: var(--tailleEntreLettre);
+    font-size: var(--tailleLettre);
+    font-family: WhitePigeon;
+    text-align: center;
+}
+
+/* mouvement du nom de la marque */
+@keyframes fadein {
+    from {
+        opacity: 0;
+        letter-spacing: var(--tailleEntreLettreAvant);
+    }
+    to {
+        opacity: 1;
+        letter-spacing: var(--tailleEntreLettre);
+    }
+}
+
+@-webkit-keyframes fadein {
+    from {
+        opacity: 0;
+        letter-spacing: var(--tailleEntreLettreAvant);
+    }
+    to {
+        opacity: 1;
+        letter-spacing: var(--tailleEntreLettreAvant);
+    }
+}
+
+/* reglage boutons resaux sociaux */
+.reseau {
+    flex: 2;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.reseau a{
+    border: 1px solid var(--couleurEcritureEtElement);
+    border-radius: 90px;
+    transition: all 0.2s ease-out;
+    padding: 2px 2px;
+    margin: 5px;
+    text-decoration: none;
+    width: 6vh;
+    height: 6vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.reseau img {
+    width: 5vh;
+    height: 5vh;
+}
+
+/* article */
+#article {
+    display: flex;
+    flex-direction: row;
+    background-color: var(--couleurFond);
+    color: var(--couleurEcritureEtElement);
+    font-family: GeoLight;
+    width: 100%;
+}
+
+.espace {
+    flex: 1;
+}
+
+.article {
+    flex: 2;
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+    width: inherit;
+}
+
+.titre {
+    align-self: center;
+}
+
+.article div:first-of-type {
+    width: 80%;
+    align-self: center;
+}
+
+form {
+    display: flex;
+    width: 80%;
+    flex-direction: column;
+    align-self: center;
+}
+
+label:required {
+    background-color: red;
+    content: "ce champs est requis";
+}
+
+.article label {
+    display: flex;
+    flex-direction: column;
+}
+
+.article input, button {
+    background-color: #223642;
+    border-color: #223642;
+    border-style: solid;
+    width: inherit;
+    border-radius: 15px;
+    color: var(--couleurBasPageBas);
+    margin: 5px;
+}
+
+button {
+    width: 50%;
+    align-self: center;
+    height: 30px;
+    color: var(--couleurEcritureEtElement);
+    margin: 15px;
+    height: inherit;
+}
+
+button:hover {
+    background-color: var(--couleurEcritureEtElement);
+    opacity: 0.5;
+    color: var(--couleurBasPageHaut);
+}
+
+textarea {
+    height: 30vh;
+    background-color: #223642;
+    border-radius: 15px;
+    border-color: #223642;
+}
+
+/*barre de scrol de la zone de message*/
+textarea::-webkit-scrollbar {
+    width: var(--tailleScroll); 
+  }
+  
+textarea::-webkit-scrollbar-track { 
+    background: #223642;
+}
+
+textarea::-webkit-scrollbar-thumb {
+    background-color: var(--couleurScroll); 
+    border-radius: 20px; 
+    border: 3px solid #223642; 
+}
+
+.ou {
+    align-self: center;
+}
+
+.contact a {
+    color: var(--couleurEcritureEtElement);
+}
+
+/* bas de page */
+footer {
+    display: flex;
+    width: inherit;
+    flex-direction: column;
+}
+
+.milieu{
+    display: flex;
+    flex: 5;
+    font-family: GameSpace;
+    flex-direction: row;
+    align-items: center;
+    color: var(--couleurElementBasPage);
+    justify-content: space-between;
+    flex-wrap: wrap;
+    text-align: center;
+}
+
+/* bouton du bas de page */
+.milieu a {
+    margin: 5px;
+    text-decoration: none;
+    color: var(--couleurElementBasPage);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.milieu a:hover {
+    border-radius: 20px;
+    background-color: var(--couleurEcritureEtElement);
+    color: black;
+    padding: 4px;
+}
+
+/* haut du bas de page */
+.haut {
+    display: flex;
+    min-height: 30vh;
+    background-color: var(--couleurBasPageHaut);
+}
+
+.haut .cote {
+    flex: 3;
+}
+
+.haut .milieu div{
+    display: flex;
+    flex-direction: column;
+    align-items: baseline;
+}
+
+/* bas du bas de page */
+.bas {
+    display: flex;
+    background-color: var(--couleurBasPageBas);
+    min-height: 5vh;
+}
+
+.bas .cote {
+    flex: 2;
+}
+
+.bas .milieu div {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}

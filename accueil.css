@@ -1,0 +1,351 @@
+
+/*variables*/
+:root {
+    --tailleLogo: 20vh;
+    --tailleFleche: 3vh;
+    --tailleBaniere: 100vh;
+    --tailleEntreLettre: 10px;
+    --tailleEntreLettreAvant: 15px;
+    --tailleLettre: xxx-large;
+    --tailleScroll: 12px;
+
+    --tempsAnimation: 3s;
+
+    --couleurScroll: rgb(105, 124, 139);
+    --couleurEcritureEtElement: white;
+    --couleurEnTete: black;
+    --couleurFond: #0a202d;
+    --couleurBasPageBas: black;
+    --couleurBasPageHaut: #06151E;
+    --couleurEcritureEtElement: white;
+    --couleurBoutonHover: white;
+    --couleurElementBasPage: rgb(151, 151, 151);
+
+    --imageFond: url(data/eau.jpg);
+}
+
+/* polices */
+@font-face { font-family: WhitePigeon; src: url(data/white_pigeon/White\ Pigeon.otf); }
+@font-face { font-family: Beauty; src: url(data/beauty_and_the_beast/Beauty\ and\ the\ Beast\ Sample.ttf); }
+@font-face { font-family: GameSpace; src: url(data/game_space_academy/Game\ Space\ Academy.otf); }
+@font-face { font-family: GeoLight; src: url(data/geo_sans_light/GeosansLight.ttf); }
+
+/*mise à jour des variables selon la taille de l'écran*/
+@media screen and (max-width: 720px){
+    :root {
+        --tailleLogo :20vh;
+        --tailleEntreLettre: 0px;
+        --tailleEntreLettreAvant: 2px;
+        --tailleLettre: x-large;
+    }
+
+}
+
+/* reglages de la fenêtre */
+html , body {
+    display: flex;
+    height: 100vh;
+    width: 100%;
+    margin: 0;
+    flex-direction: column;
+    justify-content: stretch;
+    scroll-behavior: smooth;
+    background-image: var(--imageFond);
+    background-size : cover;
+}
+
+/* div d'espace pour faire beau*/
+.espace{
+    flex: 1;
+}
+
+.espace2{
+    flex: 1.5;
+}
+
+.espace3 {
+    flex: 5;
+}
+
+/* barre de scroll */
+body::-webkit-scrollbar {
+    width: var(--tailleScroll); 
+  }
+  
+body::-webkit-scrollbar-track { 
+    background: var(--couleurFond);
+}
+
+body::-webkit-scrollbar-thumb {
+    background-color: var(--couleurScroll); 
+    border-radius: 20px; 
+    border: 3px solid var(--couleurFond); 
+}
+
+/* en-tête */
+.header {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    background-color: var(--couleurEnTete);
+    opacity: 0.5;
+}
+
+.centre {
+    display: flex;
+    width: inherit;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    min-height: 100vh;
+    flex: 12;
+}
+
+/* réglages des boutons en haut */
+nav {
+    flex: 1;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: inherit;
+    align-items: flex-start;
+    flex-wrap: wrap;
+}
+
+nav div {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+/* element au centre de notre baniere*/
+.elementCentre {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    flex: 10;
+}
+
+.elt1 {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+#logo {
+    width: var(--tailleLogo);
+    height: var(--tailleLogo);
+    animation: fadein var(--tempsAnimation);
+    -webkit-animation: fadein var(--tempsAnimation);
+}
+
+#nom, .slogan {
+    color: var(--couleurEcritureEtElement);
+    animation: fadein var(--tempsAnimation);
+    -webkit-animation: fadein var(--tempsAnimation);
+    letter-spacing: var(--tailleEntreLettre);
+}
+
+#nom {
+    font-size: var(--tailleLettre);
+    font-family: WhitePigeon;
+    text-align: center;
+}
+
+.slogan h3 {
+    font-size: 2vh;
+    text-align: center;
+    font-family: Beauty;
+}
+
+/* mouvement du nom de la marque */
+@keyframes fadein {
+    from {
+        opacity: 0;
+        letter-spacing: var(--tailleEntreLettreAvant);
+    }
+    to {
+        opacity: 1;
+        letter-spacing: var(--tailleEntreLettre);
+    }
+}
+
+@-webkit-keyframes fadein {
+    from {
+        opacity: 0;
+        letter-spacing: var(--tailleEntreLettreAvant);
+    }
+    to {
+        opacity: 1;
+        letter-spacing: var(--tailleEntreLettreAvant);
+    }
+}
+
+@-moz-keyframes fadein {
+    from {
+        opacity: 0;
+        letter-spacing: var(--tailleEntreLettreAvant);
+    }
+    to {
+        opacity: 1;
+        letter-spacing: var(--tailleEntreLettreAvant);
+    }
+}
+
+/* bouton ovale de l'entête */
+.plus a, .bouton a{
+    color: var(--couleurEcritureEtElement);
+    transition: all 0.2s ease-out;
+    text-decoration: none;
+    width: 100px;
+    border: 1px solid var(--couleurEcritureEtElement);
+    border-radius: 18px;
+    padding: 8px 12px;
+    text-align: center;
+    font-family: GameSpace;
+    margin: 5px;
+}
+
+/* gere tout les boutons quand on passe dessus */
+a:hover{
+    background-color: var(--couleurEcritureEtElement);
+    opacity: 0.5;
+    color: black;
+}
+
+/*barre à droite qui gère les reseaux sociaux*/
+.reseau {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* bouton des reseaux sociaux */
+.reseau a{
+    border: 1px solid var(--couleurEcritureEtElement);
+    border-radius: 90px;
+    transition: all 0.2s ease-out;
+    padding: 2px 2px;
+    margin: 5px;
+    text-decoration: none;
+    width: 6vh;
+    height: 6vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.reseau img {
+    width: 5vh;
+    height: 5vh;
+}
+
+/* article */
+#article {
+    display: flex;
+    flex-direction: row;
+    background-color: var(--couleurFond);
+    color: var(--couleurEcritureEtElement);
+    font-family: GeoLight;
+    width: 100%;
+}
+
+.espace {
+    flex: 1;
+}
+
+.article {
+    flex: 2;
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+}
+
+.titre {
+    align-self: center;
+}
+
+.image {
+    display: flex;
+    align-items: center;
+    align-self: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.image img {
+    width: 60%;
+}
+
+/* bas de page */
+footer {
+    display: flex;
+    width: inherit;
+    flex-direction: column;
+}
+/* bas du bas de page */
+.bas {
+    display: flex;
+    background-color: var(--couleurBasPageBas);
+    min-height: 5vh;
+}
+/* haut du bas de page */
+.haut {
+    display: flex;
+    min-height: 30vh;
+    background-color: var(--couleurBasPageHaut);
+}
+
+.bas .cote {
+    flex: 2;
+}
+
+.haut .cote {
+    flex: 3;
+}
+
+.milieu{
+    display: flex;
+    flex: 5;
+    font-family: GameSpace;
+    flex-direction: row;
+    align-items: center;
+    color: var(--couleurElementBasPage);
+    justify-content: space-between;
+    flex-wrap: wrap;
+    text-align: center;
+}
+
+.haut .milieu div{
+    display: flex;
+    flex-direction: column;
+    align-items: baseline;
+}
+
+.bas .milieu div {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+/* bouton du bas de page */
+.milieu a {
+    margin: 5px;
+    text-decoration: none;
+    color: var(--couleurElementBasPage);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.milieu a:hover {
+    border-radius: 20px;
+    background-color: var(--couleurElementBasPage);
+    color: black;
+    padding: 4px;
+}
+
